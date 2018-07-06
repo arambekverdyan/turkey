@@ -2,11 +2,5 @@
 <div><span>id:</span>{{person.id}}</div>
 <div><span>First Name:</span>{{person.firstName}}</div>
 <div><span>Last Name:</span>{{person.lastName}}</div>
-<div>
-    <code>observable|async</code>:
-    {{myImage|async}}
-</div>
-<img>
-
-<!-- <img alt="" ng-src="{{person.imgage}}"></img> -->
-<!-- <div><span>Image:</span>{{person.imageUrl}}</div> -->
+<div><span>Token:</span>{{(token | async) | json}}</div>
+<!-- <img [src]="{{(image | async)?.body}}"></img> -->

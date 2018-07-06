@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { MessageService } from './message.service';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
@@ -10,20 +10,21 @@ import { catchError, map, tap } from 'rxjs/operators';
 })
 export class UrlDownloadService {
 
-  fetchedData: Observable<any>;
+  fetchedData: Observable<Blob>;
 
   private log(message: string) {
     this.messageService.add('UrlDownloadService: ' + message);
   }
 
-  fetch(url: string): Observable<any> {
-    return this.httpClient.get<any>(url)
+  fetch(url: string): Observable<Blob> {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.httpClient.get<any>(url, {headers: headers})
     .pipe(
       catchError(this.handleError('fetch: ', []))
     );
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  public handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead

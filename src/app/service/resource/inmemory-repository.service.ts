@@ -13,12 +13,10 @@ export class InMemoryRepository {
   loginResult: Observable<PrdResponseBody<LoginResult>>;
 
   private defaultAccount(): Login {
-    const token1 = 'D203836683D9A79C8F116AC64E2C1538654EC717E2F63502D0E9031DDB0';
-    const token2 = 'FACE046012FC5A5F290BB1E42F7B7F4A8AC35BB0927392515B6FA5AB53ECA045AF37A';
 
     return {
-      accessToken: token1.concat(token2),
-      providerUserId: 'aram.bekverdyan@gmail.com',
+      accessToken: 'token',
+      providerUserId: 'userId',
       clientFingerprint: 'androidX',
       loginProvider: 'NATIVE'
     };

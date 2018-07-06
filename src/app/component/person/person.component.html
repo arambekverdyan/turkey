@@ -1,0 +1,6 @@
+<h2>{{person.firstName | uppercase}} {{person.lastName | uppercase}} Details</h2>
+<div><span>id:</span>{{person.id}}</div>
+<div><span>First Name:</span>{{person.firstName}}</div>
+<div><span>Last Name:</span>{{person.lastName}}</div>
+<div><span>Token:</span>{{(token | async) | json}}</div>
+<!-- <img [src]="{{(image | async)?.body}}"></img> -->
